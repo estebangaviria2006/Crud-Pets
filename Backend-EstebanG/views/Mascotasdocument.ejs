@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <h1>Documentación de la API - Mascotas</h1>
+  <hr>
+  
+  <!-- Listar Mascotas -->
+  <h3>Listar Mascotas</h3>
+  <table>
+    <tr><td>Número</td> <td>1</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Listar Mascotas</td></tr>
+    <tr><td>URI</td> <td>/listarMascota</td></tr>
+    <tr><td>Descripción</td> <td>Permite listar las mascotas asociadas al administrador.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "id_mascota": 1,
+        "nombre": "Nombre de la mascota",
+        "fk_id_raza": 1,
+        "fk_id_categoria": 1,
+        "fk_id_genero": 1,
+        "foto": "ruta/de/la/foto.jpg",
+        "admin_id": "1027"
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "mensaje": "No se pudo mostrar, hay algún error"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "mensaje": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Registrar Mascota -->
+  <h3>Registrar Mascota</h3>
+  <table>
+    <tr><td>Número</td> <td>2</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Registrar Mascota</td></tr>
+    <tr><td>URI</td> <td>/RegistrarMascota</td></tr>
+    <tr><td>Descripción</td> <td>Permite registrar una nueva mascota.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>POST</td></tr>
+    <tr><td>Header</td> <td>
+      Authorization: Bearer &lt;token&gt;<br>
+    </td></tr>
+    <tr><td>Request JSON</td> <td>
+      <pre>{
+        "fk_id_raza": 1,
+        "fk_id_categoria": 1,
+        "fk_id_genero": 1,
+        "foto": "ruta/de/la/foto.jpg"
+      }</pre>
+    </td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "mensaje": "Mascota registrada con éxito"
+      }</pre>
+      Incorrecto:<br>
+      Status: 400<br>
+      <pre>{
+        "mensaje": "Hubo un error, no se pudo guardar la mascota"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "mensaje": "Error interno del servidor"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Actualizar Mascota -->
+  <h3>Actualizar Mascota</h3>
+  <table>
+    <tr><td>Número</td> <td>3</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Actualizar Mascota</td></tr>
+    <tr><td>URI</td> <td>/ActualizarMascota/:id_mascota</td></tr>
+    <tr><td>Descripción</td> <td>Permite actualizar una mascota existente.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>PUT</td></tr>
+    <tr><td>Header</td> <td>
+      Authorization: Bearer &lt;token&gt;<br>
+    </td></tr>
+    <tr><td>Request JSON</td> <td>
+      <pre>{
+        "fk_id_raza": 1,
+        "fk_id_categoria": 1,
+        "fk_id_genero": 1,
+        "foto": "ruta/de/la/foto.jpg"
+      }</pre>
+    </td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "mensaje": "La mascota ha sido actualizado"
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "mensaje": "No se pudo actualizar"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "mensaje": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Buscar Mascota -->
+  <h3>Buscar Mascota</h3>
+  <table>
+    <tr><td>Número</td> <td>4</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Buscar Mascota</td></tr>
+    <tr><td>URI</td> <td>/BuscarMascota/:id_mascota</td></tr>
+    <tr><td>Descripción</td> <td>Permite buscar una mascota por ID.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "id_mascota": 1,
+        "nombre": "Nombre de la mascota",
+        "fk_id_raza": 1,
+        "fk_id_categoria": 1,
+        "fk_id_genero": 1,
+        "foto": "ruta/de/la/foto.jpg",
+        "admin_id": "1027"
+      }</pre>
+      Incorrecto:<br>
+      Status: 400<br>
+      <pre>{
+        "mensaje": "No se encontró nada con ese ID"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "mensaje": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Eliminar Mascota -->
+  <h3>Eliminar Mascota</h3>
+  <table>
+    <tr><td>Número</td> <td>5</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Eliminar Mascota</td></tr>
+    <tr><td>URI</td> <td>/desactivarMascota/:id_mascota</td></tr>
+    <tr><td>Descripción</td> <td>Permite eliminar una mascota.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>DELETE</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "mensaje": "Desactivado con éxito"
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "mensaje": "No se pudo desactivar"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "mensaje": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentación API</title>
+  <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <h1>Documentación de la API</h1>
+  <hr>
+  
+  <h3>Requerimiento Documentación - Categorías</h3>
+  
+  <!-- Listar Categorías -->
+  <table>
+    <tr><td>Número</td> <td>1</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Listar Categorías</td></tr>
+    <tr><td>URI</td> <td>/listarCategoria</td></tr>
+    <tr><td>Descripción</td> <td>Permite listar las categorías asociadas al administrador.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "id_categoria": 1,
+        "tipo_categoria": "grande",
+        "admin_id": "1027"
+      }</pre>
+      Incorrecto:<br>
+      Status: 400<br>
+      <pre>{
+        "Mensaje": "No hay categorías"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "Mensaje": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Registrar Categoría -->
+  <table>
+    <tr><td>Número</td> <td>2</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Registrar Categoría</td></tr>
+    <tr><td>URI</td> <td>/RegistroCategoria</td></tr>
+    <tr><td>Descripción</td> <td>Permite registrar una nueva categoría.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>POST</td></tr>
+    <tr><td>Header</td> <td>
+      Authorization: Bearer &lt;token&gt;<br>
+    </td></tr>
+    <tr><td>Request JSON</td> <td>
+      <pre>{
+        "tipo_categoria": "grande"
+      }</pre>
+    </td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "status": 200,
+        "message": "Se registró la categoría con éxito",
+        "result": { "affectedRows": 1 }
+      }</pre>
+      Incorrecto:<br>
+      Status: 403<br>
+      <pre>{
+        "status": 403,
+        "message": "No se registró la categoría"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "status": 500,
+        "message": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Actualizar Categoría -->
+  <table>
+    <tr><td>Número</td> <td>3</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Actualizar Categoría</td></tr>
+    <tr><td>URI</td> <td>/ActualizarCategoria/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite actualizar una categoría existente.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>PUT</td></tr>
+    <tr><td>Header</td> <td>
+      Authorization: Bearer &lt;token&gt;<br>
+    </td></tr>
+    <tr><td>Request JSON</td> <td>
+      <pre>{
+        "tipo_categoria": "pequeña"
+      }</pre>
+    </td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "status": 200,
+        "message": "Se actualizó con éxito",
+        "result": { "affectedRows": 1 }
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "status": 404,
+        "message": "No se encontró el registro para actualizar"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "status": 500,
+        "message": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Buscar Categoría -->
+  <table>
+    <tr><td>Número</td> <td>4</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Buscar Categoría</td></tr>
+    <tr><td>URI</td> <td>/BuscarCategoria/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite buscar una categoría por ID.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "id_categoria": 1,
+        "tipo_categoria": "pequeña",
+        "admin_id": "1027"
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "status": 404,
+        "message": "No se encontraron resultados para la búsqueda"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "status": 500,
+        "message": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Eliminar Categoría -->
+  <table>
+    <tr><td>Número</td> <td>5</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Eliminar Categoría</td></tr>
+    <tr><td>URI</td> <td>/EliminarCategoria/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite eliminar una categoría y sus registros relacionados en la tabla mascotas.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>DELETE</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "status": 200,
+        "message": "Registros relacionados en la tabla categorias y mascotas eliminados correctamente"
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "status": 404,
+        "message": "No se encontró el registro para eliminar"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "status": 500,
+        "message": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+</body>
+</html>

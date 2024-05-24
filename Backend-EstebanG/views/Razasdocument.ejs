@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../estilos.css">
+  <title>Documentación de Servicios - Razas</title>
+</head>
+<body>
+  <h1>Documentación de la API - Razas</h1>
+  
+  <!-- Listar Razas -->
+  <h3>Listar Razas</h3>
+  <table>
+    <tr><td>Número</td> <td>1</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Listar Razas</td></tr>
+    <tr><td>URI</td> <td>/listaraza</td></tr>
+    <tr><td>Descripción</td> <td>Permite listar todas las razas asociadas al administrador autenticado.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>[
+  {
+    "id_raza": 1,
+    "nombre_raza": "pug",
+    "admin_id": "1027"
+  },
+  {
+    "id_raza": 2,
+    "nombre_raza": "pastor aleman",
+    "admin_id": "1027"
+  }
+]</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+  "Mensaje": "No hay razas registradas por este administrador"
+}</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+  "Mensaje": "Error en el sistema: Descripción del error"
+}</pre>
+    </td></tr>
+    <tr><td>Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Registrar Raza -->
+  <h3>Registrar Raza</h3>
+  <table>
+    <tr><td>Número</td> <td>2</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Registrar Raza</td></tr>
+    <tr><td>URI</td> <td>/Registraraza</td></tr>
+    <tr><td>Descripción</td> <td>Permite registrar una nueva raza.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>POST</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td>{ "nombre_raza": "Nombre de la raza" }</td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+  "status": 200,
+  "message": "Se registró la raza con éxito",
+  "result": {
+    "affectedRows": 1,
+    "insertId": 1,
+    ...
+  }
+}</pre>
+      Incorrecto:<br>
+      Status: 403<br>
+      <pre>{
+  "status": 403,
+  "message": "No se registró la raza"
+}</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+  "status": 500,
+  "message": "Error en el sistema: Descripción del error"
+}</pre>
+    </td></tr>
+    <tr><td>Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Actualizar Raza -->
+  <h3>Actualizar Raza</h3>
+  <table>
+    <tr><td>Número</td> <td>3</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Actualizar Raza</td></tr>
+    <tr><td>URI</td> <td>/Actualizaraza/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite actualizar los datos de una raza existente.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>PUT</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td>{ "nombre_raza": "Nuevo nombre de la raza" }</td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+  "status": 200,
+  "message": "Se actualizó con éxito",
+  "result": {
+    "affectedRows": 1,
+    "changedRows": 1,
+    ...
+  }
+}</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+  "status": 404,
+  "message": "No se encontró el registro para actualizar o no tiene permiso para actualizarlo."
+}</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+  "status": 500,
+  "message": "Error en el sistema: Descripción del error"
+}</pre>
+    </td></tr>
+    <tr><td>Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Buscar Raza -->
+  <h3>Buscar Raza</h3>
+  <table>
+    <tr><td>Número</td> <td>4</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Buscar Raza</td></tr>
+    <tr><td>URI</td> <td>/Buscaraza/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite buscar una raza por ID.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+  "id_raza": 1,
+  "nombre_raza": "Nombre de la raza",
+  "admin_id": "1027"
+}</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+  "status": 404,
+  "message": "No se encontraron resultados para la búsqueda o no tiene permiso para acceder a esta raza"
+}</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+  "status": 500,
+  "message": "Error en el sistema: Descripción del error"
+}</pre>
+    </td></tr>
+    <tr><td>Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Eliminar Raza -->
+  <h3>Eliminar Raza</h3>
+  <table>
+    <tr><td>Número</td> <td>5</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Eliminar Raza</td></tr>
+    <tr><td>URI</td> <td>/Eliminaraza/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite eliminar una raza por ID.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>DELETE</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+  "status": 200,
+  "message": "Raza eliminada con éxito"
+}</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+  "status": 404,
+  "message": "No se encontró el registro para eliminar o no tiene permiso para eliminarlo."
+}</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+  "status": 500,
+  "message": "Error en el sistema: Descripción del error"
+}</pre>
+    </td></tr>
+    <tr><td>Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación API</title>
+  <link rel="stylesheet" href="../estilos.css">
+</head>
+<body>
+  <h1>Documentación de la API</h1>
+  <hr>
+  
+  <h3>Requerimiento - Documentación Generos</h3>
+  
+  <!-- Listar -->
+  <table>
+    <tr><td>Número</td> <td>1</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Listar Géneros</td></tr>
+    <tr><td>URI</td> <td>/listarGenero</td></tr>
+    <tr><td>Descripción</td> <td>Permite listar los géneros asociados al administrador.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "id_genero": 1,
+        "tipo_generos": "macho",
+        "admin_id": "1027"
+      }</pre>
+      Incorrecto:<br>
+      Status: 400<br>
+      <pre>{
+        "message": "No hay géneros registrados para este administrador"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "message": "Error en el sistema: ..."
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia </td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Registrar  -->
+  <table>
+    <tr><td>Número</td> <td>2</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Registrar Género</td></tr>
+    <tr><td>URI</td> <td>/RegistroGenero</td></tr>
+    <tr><td>Descripción</td> <td>Permite registrar un nuevo género.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>POST</td></tr>
+    <tr><td>Header</td> <td>
+      Authorization: Bearer &lt;token&gt;<br>
+    </td></tr>
+    <tr><td>Request JSON</td> <td>
+      <pre>{
+        "tipo_generos": "macho"
+      }</pre>
+    </td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "status": 200,
+        "message": "Se registró el género con éxito",
+        "result": { "affectedRows": 1 }
+      }</pre>
+      Incorrecto:<br>
+      Status: 403<br>
+      <pre>{
+        "status": 403,
+        "message": "No se registró el género"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "status": 500,
+        "message": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Actualizar -->
+  <table>
+    <tr><td>Número</td> <td>3</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Actualizar Género</td></tr>
+    <tr><td>URI</td> <td>/ActualizarGenero/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite actualizar un género existente.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>PUT</td></tr>
+    <tr><td>Header</td> <td>
+      Authorization: Bearer &lt;token&gt;<br>
+    </td></tr>
+    <tr><td>Request JSON</td> <td>
+      <pre>{
+        "tipo_generos": "hembra"
+      }</pre>
+    </td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "status": 200,
+        "message": "Se actualizó con éxito",
+        "result": { "affectedRows": 1 }
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "status": 404,
+        "message": "No se encontró el registro para actualizar"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "status": 500,
+        "message": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+  <hr><br>
+  
+  <!-- Buscar -->
+  <table>
+    <tr><td>Número</td> <td>4</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Buscar Género</td></tr>
+    <tr><td>URI</td> <td>/BuscarGenero/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite buscar un género por ID.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>GET</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "id_genero": 1,
+        "tipo_generos": "hembra",
+        "admin_id": "1027"
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "status": 404,
+        "message": "No se encontraron resultados para la búsqueda"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+    </td></tr>
+    <tr><td>Nombre Desarrollador:</td> <td>Daniel F Gonzalez - devdfg</td></tr>
+    </table>
+    
+    <!-- Eliminar Género -->
+  <table>
+    <tr><td>Número</td> <td>5</td></tr>
+    <tr><td>Nombre del Servicio</td> <td>Eliminar Género</td></tr>
+    <tr><td>URI</td> <td>/EliminarGenero/:id</td></tr>
+    <tr><td>Descripción</td> <td>Permite eliminar un género y sus registros relacionados en la tabla de mascotas.</td></tr>
+    <tr><td>Verbo HTTP</td> <td>DELETE</td></tr>
+    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Request JSON</td> <td></td></tr>
+    <tr><td>Respuesta JSON</td> <td>
+      Correcto:<br>
+      Status: 200<br>
+      <pre>{
+        "status": 200,
+        "message": "Registros relacionados en la tabla de géneros y mascotas eliminados correctamente"
+      }</pre>
+      Incorrecto:<br>
+      Status: 404<br>
+      <pre>{
+        "status": 404,
+        "message": "No se encontró el registro para eliminar"
+      }</pre>
+      Error:<br>
+      Status: 500<br>
+      <pre>{
+        "status": 500,
+        "message": "Error en el sistema"
+      }</pre>
+    </td></tr>
+    <tr><td>Nombre Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
+  </table>
+  
+</body>
+</html>
+
+</body>
+</html>
