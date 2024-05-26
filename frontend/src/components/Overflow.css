@@ -1,0 +1,7 @@
+select:focus {
+    overflow-y: auto;
+}
+.scrollbar-style {
+    scrollbar-width: thin;
+    scrollbar-color: #888888 transparent;
+}

@@ -34,6 +34,11 @@ function ConsultarM() {
         fetchPetData();
     }, [id_mascota, token]);
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        window.location.href = '/';  
+    };
+
     return (
         <div className='flex flex-col items-center justify-center min-h-screen' style={{ backgroundImage: `url(${bgBlue})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', paddingBottom: '15vh' }}>
             <div className="flex items-center">
@@ -42,7 +47,7 @@ function ConsultarM() {
                 </Link>
                 <span className="text-gray-50 mb-20 text-xl">Consultar Mascota</span>
                 <Link to="/">
-                    <img src={bgClose} alt="Close" className="cursor-pointer mb-20 ml-12" />
+                    <img src={bgClose} alt="Close" className="cursor-pointer mb-20 ml-12" onClick={handleLogout}/>
                 </Link>
             </div>
 

@@ -27,7 +27,6 @@ function AdicionarM() {
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!token) {
-            // Redirige al usuario al login si no hay token almacenado
             window.location.href = '/login';
         } else {
             const fetchData = async () => {
@@ -51,24 +50,27 @@ function AdicionarM() {
         }
     }, []);
 
+
+    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('token'); // Obtén el token del almacenamiento local
+        const token = localStorage.getItem('token'); 
 
-        // Verificar si todos los campos están completos
+        
         if (
             formData.name === '' ||
             formData.fk_id_raza === '' ||
             formData.fk_id_categoria === '' ||
             formData.fk_id_genero === ''
         ) {
-            // Mostrar una alerta de error si hay campos vacíos
+           
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
                 text: 'Por favor, complete todos los campos',
             });
-            return; // Detener la ejecución si hay campos vacíos
+            return; 
         }
 
         const data = new FormData();
@@ -82,18 +84,17 @@ function AdicionarM() {
             const response = await axios.post('http://localhost:3000/RegistrarMascota', data, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
-                    'token': token // Añade el token en los encabezados
+                    'token': token 
                 }
             });
             console.log('Mascota registrada con éxito:', response.data);
 
-            // Mostrar una alerta de éxito
+      
             Swal.fire({
                 icon: 'success',
                 title: '¡Éxito!',
                 text: 'Mascota registrada correctamente',
             }).then((result) => {
-                // Redirigir al usuario a la lista de mascotas después de hacer clic en OK
                 if (result.isConfirmed || result.isDismissed) {
                     window.location.href = '/ListarM';
                 }
@@ -101,7 +102,6 @@ function AdicionarM() {
         } catch (error) {
             console.error('Error registrando mascota:', error);
 
-            // Mostrar una alerta de error
             Swal.fire({
                 icon: 'error',
                 title: 'Error!',
@@ -118,6 +118,10 @@ function AdicionarM() {
         }));
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        window.location.href = '/';
+    }
 
 
     return (
@@ -136,7 +140,7 @@ function AdicionarM() {
                 </Link>
                 <span className="text-gray-50 mb-20 text-xl">Adicionar Mascota</span>
                 <Link to="/">
-                <img src={bgClose} alt="Close" className="cursor-pointer mb-20 ml-12" />
+                <img src={bgClose} alt="Close" className="cursor-pointer mb-20 ml-12" onClick={handleLogout}/>
                 </Link>
             </div>
             <img
@@ -200,12 +204,12 @@ function AdicionarM() {
             type='file' 
             id='foto'
             onChange={(e) => {
-                // Verifica si se ha seleccionado algún archivo
+                
                 if (e.target.files.length > 0) {
                     setFormData(prevState => ({
                         ...prevState,
-                        foto: e.target.files[0],  // Guarda el primer archivo seleccionado
-                        mostrarFoto: URL.createObjectURL(e.target.files[0])  // Crea una URL para mostrar la imagen seleccionada
+                        foto: e.target.files[0],  
+                        mostrarFoto: URL.createObjectURL(e.target.files[0])  
                     }));
                 }
             }}
@@ -214,7 +218,7 @@ function AdicionarM() {
             required
         />
     </label>
-    <img src={bgIconCamera} alt="Camera" className="cursor-pointer -mt-8 h-7 ml-80" /> 
+    <img src={bgIconCamera} alt="Camera" className="cursor-pointer -mt-8 h-6 ml-80" /> 
 </div>
 
 

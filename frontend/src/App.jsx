@@ -6,6 +6,7 @@ import 'tailwindcss/tailwind.css';
 import AdicionarM from './pages/AdicionarM';
 import ModificarM from './pages/ModificarM';
 import ConsultarM from './pages/ConsultarM';
+import ProtectedRoute from './Router/ProteccionRuta';
 
 
 function App() {
@@ -13,11 +14,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route element={<ProtectedRoute />}>
         <Route path="/ListarM" element={<ListarM />} />
         <Route path="/AdicionarM" element={<AdicionarM />} />
         <Route path="/ModificarM/:id_mascota" element={<ModificarM />} />
         {/* Ajusta la ruta para incluir el parámetro id_mascota */}
         <Route path="/ConsultarM/:id_mascota" element={<ConsultarM />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -7,9 +7,9 @@ import bgAdd from '../assets/btn-add.svg';
 import btn_show from '../assets/btn-show.svg';
 import btn_edit from '../assets/btn-edit.svg';
 import btn_delete from '../assets/btn-delete.svg';
-import '../components/.css';
+import '../components/.css'
 
-function ListarM() {
+function Listar() {
     const { id_mascota } = useParams();
     const [pets, setPets] = useState([]);
     const token = localStorage.getItem('token');
@@ -50,35 +50,41 @@ function ListarM() {
         }
     };
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        window.location.href = '/';  // Redirige al login después de cerrar sesión
+    };
+
     return (
-        <div className='flex flex-col items-center justify-center' style={{ backgroundImage: `url(${bgBlue})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', paddingBottom: '10vh', height: '100vh' }}>
-            <div className="sticky top-0 z-10 flex items-center justify-center w-full max-w-screen-lg px-5 mt-24 bg-transparent">
-                <div className="flex items-center justify-center w-full space-x-2">
-                    <h1 className='text-xl font-normal text-gray-50 ml-11'>Administrar Mascotas</h1>
+        <div className='flex flex-col items-center justify-center min-h-screen' style={{ backgroundImage: `url(${bgBlue})`, backgroundRepeat: 'no-repeat', backgroundPosition: 'center', paddingBottom: '10vh' }}>
+            <div className="flex items-center justify-center w-full max-w-screen-lg mt-4 px-5 sticky top-0 bg-transparent z-5">
+                <div className="flex items-center justify-center space-x-2 w-full">
+                    <h1 className='text-gray-50 text-xl font-normal' style={{marginTop: '50px', marginLeft:'40px'}}>Administrar Mascotas</h1>
                     <div className="ml-auto">
                         <Link to="/">
-                            <img src={bgClose} alt="Close" className="cursor-pointer ml-9" />
+                            <img src={bgClose} style={{marginTop:'50px', marginLeft:'30px'}} alt="Close" className="cursor-pointer" onClick={handleLogout} />
                         </Link>
                     </div>
                 </div>
             </div>
 
-            <div className="sticky z-10 mt-12 bg-transparent top-16">
+            <div className="mt-3 sticky top-16 z-10 bg-transparent">
                 <Link to="/AdicionarM">
                     <img src={bgAdd} alt="Add" className="cursor-pointer" />
                 </Link>
             </div>
 
-            <div className="px-5 mt-6 space-y-3 overflow-y-auto hide-scrollbar" style={{ width: '400px' }}>
+            <div className="mt-6 space-y-3 px-5 flex-grow overflow-y-auto hide-scrollbar" style={{ width: '400px', maxHeight: '70vh' }}>
                 {pets.map((pet, index) => {
                     const imageUrl = `http://localhost:3000/img/${pet.foto}`;
                     console.log(`Pet ${index + 1} photo URL: ${imageUrl}`);
                     return (
-                        <div key={index} className="flex items-center w-full p-4 bg-gray-300 rounded-3xl">
-                            <div className="w-16 h-16 overflow-hidden rounded-full">
-                                <img src={imageUrl} alt={`Picture ${index + 1}`} className="w-full h-full object-cover ml-[-1px]" />
+                        <div key={index} className="w-full p-4 rounded-3xl flex items-center bg-gray-300">
+                            <div className="w-16 h-16 rounded-full overflow-hidden">
+                                <img src={`http://localhost:3000/img/${pet.foto}`} alt={`Picture ${index + 1}`} className="w-full h-full object-cover ml-[-1px]" />
                             </div>
-                            <div className="flex items-center justify-between flex-grow ml-4">
+
+                            <div className="flex flex-grow items-center justify-between ml-4">
                                 <div>
                                     <h3 className='text-blue-800'>{pet.name}</h3>
                                     <p className='text-gray-400'>{pet.raza}</p>
@@ -101,4 +107,4 @@ function ListarM() {
     );
 }
 
-export default ListarM;
+export default Listar;

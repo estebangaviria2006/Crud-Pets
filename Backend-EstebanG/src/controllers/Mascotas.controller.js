@@ -100,8 +100,8 @@ export const RegistrarM = async (req, res) => {
             const { name, fk_id_raza, fk_id_categoria, fk_id_genero } = req.body;
 
             // Validar que los campos no sean nulos o indefinidos
-            if (!fk_id_raza || !fk_id_categoria || !fk_id_genero) {
-                return res.status(400).json({ mensaje: "Los campos fk_id_raza, fk_id_categoria y fk_id_genero son obligatorios" });
+            if (!name || !fk_id_raza || !fk_id_categoria || !fk_id_genero) {
+                return res.status(400).json({ mensaje: "Los campos nombre, fk_id_raza, fk_id_categoria y fk_id_genero son obligatorios" });
             }
 
             // Obtener la ruta de la imagen cargada

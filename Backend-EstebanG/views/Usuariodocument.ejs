@@ -15,8 +15,8 @@
   <tr><td>URI</td> <td>/registrarUsuario</td></tr>
   <tr><td>Descripción</td> <td>Permite registrar un nuevo usuario.</td></tr>
   <tr><td>Verbo HTTP</td> <td>POST</td></tr>
-  <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
-  <tr><td>Request JSON</td> <td>{ "identificacion": "12345", "nombre": "esteban", "email": "esteban@gamil.com", "password": "1234567" }</td></tr>
+  <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
+  <tr><td>Request JSON</td> <td>{ "identificacion": "1121", "nombre": "Esteban", "email": "esteban@gmail.com", "password": "11111" }</td></tr>
   <tr><td>Respuesta JSON</td> <td>
     Correcto:<br>
     Status: 200<br>
@@ -48,7 +48,7 @@
   <tr><td>URI</td> <td>/listarUsuarios</td></tr>
   <tr><td>Descripción</td> <td>Permite listar todos los usuarios registrados en el sistema.</td></tr>
   <tr><td>Verbo HTTP</td> <td>GET</td></tr>
-  <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+  <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
   <tr><td>Request JSON</td> <td></td></tr>
   <tr><td>Respuesta JSON</td> <td>
     Correcto:<br>
@@ -91,7 +91,7 @@
   <tr><td>URI</td> <td>/actualizarUsuario/:identificacion</td></tr>
   <tr><td>Descripción</td> <td>Permite actualizar los datos de un usuario existente.</td></tr>
   <tr><td>Verbo HTTP</td> <td>PUT</td></tr>
-  <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+  <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
   <tr><td>Request JSON</td> <td>
     <pre>{
   "nombre": "Nuevo nombre",
@@ -132,7 +132,7 @@
   <tr><td>URI</td> <td>/eliminarUsuario/:identificacion</td></tr>
   <tr><td>Descripción</td> <td>Permite eliminar un usuario por su identificación.</td></tr>
   <tr><td>Verbo HTTP</td> <td>DELETE</td></tr>
-  <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+  <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
   <tr><td>Request JSON</td> <td></td></tr>
   <tr><td>Respuesta JSON</td> <td>
     Correcto:<br>
@@ -167,7 +167,7 @@
   <tr><td>URI</td> <td>/buscarUsuarios/:identificacion</td></tr>
   <tr><td>Descripción</td> <td>Permite buscar un usuario por su identificación.</td></tr>
   <tr><td>Verbo HTTP</td> <td>GET</td></tr>
-  <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+  <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
   <tr><td>Request JSON</td> <td></td></tr>
   <tr><td>Respuesta JSON</td> <td>
     Correcto:<br>
@@ -190,10 +190,8 @@
   "message": "Error en el servidor: Descripción del error"
 }</pre>
   </td></tr>
-  <tr><td>Desarrollador</td> <td>Tu nombre</td></tr>
+  <tr><td>Desarrollador</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
 </table>
-</td></tr>
-<tr><td>Nombre Desarrollador:</td> <td>Esteban Alejandro Gaviria Murcia</td></tr>
 </table>
 </body>
 </html>

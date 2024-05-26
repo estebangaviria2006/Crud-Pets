@@ -2,7 +2,7 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-
+background-color: rgb(245, 245, 233);
   padding: 20px;
 }
 
@@ -17,14 +17,14 @@ h3 {
 
 /* Estilos para las tablas */
 table {
-  width: 60%;
+  width: 70%;
   border-collapse: collapse;
   margin-bottom: 20px;
   
 }
 
 table, th, td {
-  border: 1px solid #ddd;
+  border: 1px solid #cecece;
 }
 
 th, td {

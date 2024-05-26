@@ -17,7 +17,7 @@
     <tr><td>URI</td> <td>/listaraza</td></tr>
     <tr><td>Descripción</td> <td>Permite listar todas las razas asociadas al administrador autenticado.</td></tr>
     <tr><td>Verbo HTTP</td> <td>GET</td></tr>
-    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
     <tr><td>Request JSON</td> <td></td></tr>
     <tr><td>Respuesta JSON</td> <td>
       Correcto:<br>
@@ -58,7 +58,7 @@
     <tr><td>URI</td> <td>/Registraraza</td></tr>
     <tr><td>Descripción</td> <td>Permite registrar una nueva raza.</td></tr>
     <tr><td>Verbo HTTP</td> <td>POST</td></tr>
-    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
     <tr><td>Request JSON</td> <td>{ "nombre_raza": "Nombre de la raza" }</td></tr>
     <tr><td>Respuesta JSON</td> <td>
       Correcto:<br>
@@ -98,7 +98,7 @@
     <tr><td>URI</td> <td>/Actualizaraza/:id</td></tr>
     <tr><td>Descripción</td> <td>Permite actualizar los datos de una raza existente.</td></tr>
     <tr><td>Verbo HTTP</td> <td>PUT</td></tr>
-    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
     <tr><td>Request JSON</td> <td>{ "nombre_raza": "Nuevo nombre de la raza" }</td></tr>
     <tr><td>Respuesta JSON</td> <td>
       Correcto:<br>
@@ -138,7 +138,7 @@
     <tr><td>URI</td> <td>/Buscaraza/:id</td></tr>
     <tr><td>Descripción</td> <td>Permite buscar una raza por ID.</td></tr>
     <tr><td>Verbo HTTP</td> <td>GET</td></tr>
-    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
     <tr><td>Request JSON</td> <td></td></tr>
     <tr><td>Respuesta JSON</td> <td>
       Correcto:<br>
@@ -174,7 +174,7 @@
     <tr><td>URI</td> <td>/Eliminaraza/:id</td></tr>
     <tr><td>Descripción</td> <td>Permite eliminar una raza por ID.</td></tr>
     <tr><td>Verbo HTTP</td> <td>DELETE</td></tr>
-    <tr><td>Header</td> <td>Authorization: Bearer &lt;token&gt;</td></tr>
+    <tr><td>Header</td> <td>Authorization: &lt;token&gt;</td></tr>
     <tr><td>Request JSON</td> <td></td></tr>
     <tr><td>Respuesta JSON</td> <td>
       Correcto:<br>
