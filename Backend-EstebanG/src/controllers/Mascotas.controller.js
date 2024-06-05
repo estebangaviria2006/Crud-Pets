@@ -140,27 +140,27 @@ export const ActualizarM = async (req, res) => {
         const adminId = req.usuario.identificacion;
         const { id_mascota } = req.params;
 
-        // Manejar la carga de archivos con Multer para la actualización
+   
         uploadA.single('foto')(req, res, async function (err) {
             if (err) {
                 console.error('Error al cargar la imagen:', err);
                 return res.status(500).json({ message: 'Error al cargar la imagen' });
             }
 
-            // Extraer los valores del cuerpo de la solicitud
+       
             const { name, fk_id_raza, fk_id_categoria, fk_id_genero } = req.body;
             const foto = req.file ? req.file.filename : req.body.foto;
 
-            // Verificar si al menos uno de los campos está presente en la solicitud
+    //validacion de datos
             if (!name && !fk_id_raza && !fk_id_categoria && !fk_id_genero && !foto) {
                 return res.status(400).json({ message: 'Al menos uno de los campos (name, fk_id_raza, fk_id_categoria, fk_id_genero, foto) debe estar presente en la solicitud para realizar la actualización.' });
             }
 
             try {
-                // Consultar los valores actuales de la mascota
+                
                 const [oldUser] = await pool.query('SELECT * FROM mascotas WHERE id_mascota = ?', [parseInt(id_mascota)]);
 
-                // Preparar los valores para la actualización
+                //prepara los datos para la actualizacion
                 const updateValues = {
                     name: name ? name : oldUser[0].name,
                     fk_id_raza: fk_id_raza ? fk_id_raza : oldUser[0].fk_id_raza,
@@ -169,7 +169,7 @@ export const ActualizarM = async (req, res) => {
                     foto: foto ? foto : oldUser[0].foto,
                 };
 
-                // Actualizar los datos en la base de datos
+                //actualiza los datos en phpMyadmin
                 const updateQuery = `UPDATE mascotas SET name=?, fk_id_raza=?, fk_id_categoria=?, foto=? ,fk_id_genero=? WHERE id_mascota=?`;
                 const [resultado] = await pool.query(updateQuery, [
                     updateValues.name,
@@ -181,7 +181,6 @@ export const ActualizarM = async (req, res) => {
                 ]);
 
                 if (resultado.affectedRows > 0) {
-                    // Consultar los datos actualizados de la mascota
                     let query = `SELECT 
                                     mascotas.id_mascota, 
                                     mascotas.name, 
