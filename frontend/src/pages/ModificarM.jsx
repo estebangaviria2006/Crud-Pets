@@ -51,6 +51,13 @@ function ModificarMascota() {
                 setPreviewImage(`http://localhost:3000/img/${foto}`);
                 setSelectedImage(`http://localhost:3000/img/${foto}`);
             }// Establecer la URL de la imagen seleccionada
+             // Agregar el console.log de los valores iniciales de los select
+             console.log("Valores iniciales de los select:", {
+                name: name || '',
+                fk_id_raza: fk_id_raza || '',
+                fk_id_categoria: fk_id_categoria || '',
+                fk_id_genero: fk_id_genero || ''
+            });
         } catch (error) {
             console.error('Error al obtener los datos de la mascota:', error);
         }
@@ -107,7 +114,7 @@ function ModificarMascota() {
             // Mostrar alerta indicando que debe completar todos los campos
             Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
+                title: 'Error!',
                 text: 'Debe completar todos los campos',
             });
             return;

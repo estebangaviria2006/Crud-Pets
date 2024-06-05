@@ -140,8 +140,8 @@ export const ActualizarM = async (req, res) => {
         const adminId = req.usuario.identificacion;
         const { id_mascota } = req.params;
 
-        // Manejar la carga de archivos con Multer
-        upload.single('foto')(req, res, async function (err) {
+        // Manejar la carga de archivos con Multer para la actualización
+        uploadA.single('foto')(req, res, async function (err) {
             if (err) {
                 console.error('Error al cargar la imagen:', err);
                 return res.status(500).json({ message: 'Error al cargar la imagen' });
@@ -156,32 +156,44 @@ export const ActualizarM = async (req, res) => {
                 return res.status(400).json({ message: 'Al menos uno de los campos (name, fk_id_raza, fk_id_categoria, fk_id_genero, foto) debe estar presente en la solicitud para realizar la actualización.' });
             }
 
-            // Actualizar los datos en la base de datos
-            const updateQuery = `UPDATE mascotas SET name=?, fk_id_raza=?, fk_id_categoria=?, fk_id_genero=?, foto=? WHERE id_mascota=?`;
             try {
+                // Consultar los valores actuales de la mascota
+                const [oldUser] = await pool.query('SELECT * FROM mascotas WHERE id_mascota = ?', [parseInt(id_mascota)]);
+
+                // Preparar los valores para la actualización
+                const updateValues = {
+                    name: name ? name : oldUser[0].name,
+                    fk_id_raza: fk_id_raza ? fk_id_raza : oldUser[0].fk_id_raza,
+                    fk_id_categoria: fk_id_categoria ? fk_id_categoria : oldUser[0].fk_id_categoria,
+                    fk_id_genero: fk_id_genero ? fk_id_genero : oldUser[0].fk_id_genero,
+                    foto: foto ? foto : oldUser[0].foto,
+                };
+
+                // Actualizar los datos en la base de datos
+                const updateQuery = `UPDATE mascotas SET name=?, fk_id_raza=?, fk_id_categoria=?, foto=? ,fk_id_genero=? WHERE id_mascota=?`;
                 const [resultado] = await pool.query(updateQuery, [
-                    name,
-                    fk_id_raza,
-                    fk_id_categoria,
-                    fk_id_genero,
-                    foto,
+                    updateValues.name,
+                    updateValues.fk_id_raza,
+                    updateValues.fk_id_categoria,
+                    updateValues.foto,
+                    updateValues.fk_id_genero,
                     parseInt(id_mascota)
                 ]);
 
                 if (resultado.affectedRows > 0) {
                     // Consultar los datos actualizados de la mascota
                     let query = `SELECT 
-                                        mascotas.id_mascota, 
-                                        mascotas.name, 
-                                        mascotas.foto,
-                                        razas.nombre_raza as raza, 
-                                        categorias.tipo_categoria as categoria, 
-                                        generos.tipo_generos as genero 
-                                    FROM mascotas
-                                    JOIN razas ON mascotas.fk_id_raza = razas.id_raza
-                                    JOIN categorias ON mascotas.fk_id_categoria = categorias.id_categoria
-                                    JOIN generos ON mascotas.fk_id_genero = generos.id_genero
-                                    WHERE mascotas.admin_id = ? AND mascotas.id_mascota = ?`;
+                                    mascotas.id_mascota, 
+                                    mascotas.name, 
+                                    mascotas.foto,
+                                    razas.nombre_raza as raza, 
+                                    categorias.tipo_categoria as categoria, 
+                                    generos.tipo_generos as genero 
+                                FROM mascotas
+                                JOIN razas ON mascotas.fk_id_raza = razas.id_raza
+                                JOIN categorias ON mascotas.fk_id_categoria = categorias.id_categoria
+                                JOIN generos ON mascotas.fk_id_genero = generos.id_genero
+                                WHERE mascotas.admin_id = ? AND mascotas.id_mascota = ?`;
 
                     const [result] = await pool.query(query, [adminId, parseInt(id_mascota)]);
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-05-2024 a las 19:56:10
+-- Tiempo de generación: 06-06-2024 a las 01:49:49
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.1.25
 
@@ -38,9 +38,11 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id_categoria`, `tipo_categoria`, `admin_id`) VALUES
-(3, 'liviano', 1121),
-(4, 'chiquito', 1121),
-(5, 'adorable', 1121);
+(6, 'Perro', 1121),
+(7, 'Gato', 1121),
+(8, 'Ave', 1121),
+(9, 'Reptil', 1121),
+(10, 'Roedor', 1121);
 
 -- --------------------------------------------------------
 
@@ -59,9 +61,8 @@ CREATE TABLE `generos` (
 --
 
 INSERT INTO `generos` (`id_genero`, `tipo_generos`, `admin_id`) VALUES
-(1, 'masculino', 1121),
-(2, 'femenino', 1121),
-(3, 'lo que caiga', 1121);
+(1, 'Macho', 1121),
+(2, 'Hembra', 1121);
 
 -- --------------------------------------------------------
 
@@ -84,9 +85,10 @@ CREATE TABLE `mascotas` (
 --
 
 INSERT INTO `mascotas` (`id_mascota`, `name`, `fk_id_raza`, `fk_id_categoria`, `fk_id_genero`, `foto`, `admin_id`) VALUES
-(11, 'canino', 5, 4, 2, '149286-1716483564597-668710657.jpg', 1121),
-(12, 'salomon', 2, 3, 1, 'lobo-1716482529457-293874038.jpg', 1121),
-(14, 'Andres', 4, 5, 1, 'Loguis-1716486404589-376233273.png', 1121);
+(11, 'Bolita', 4, 6, 1, 'DulcePerro-1716687709823-454755574.jpg', 1121),
+(12, 'Blues', 12, 9, 1, 'Serpiente-1716691840105-194078399.jpg', 1121),
+(14, 'Antonio', 14, 8, 1, 'Perico-1716691926059-848352455.jpg', 1121),
+(15, 'Husky', 7, 6, 1, 'LoboSiberiano-1716687152423-582518093.jpg', 1121);
 
 -- --------------------------------------------------------
 
@@ -105,10 +107,19 @@ CREATE TABLE `razas` (
 --
 
 INSERT INTO `razas` (`id_raza`, `nombre_raza`, `admin_id`) VALUES
-(1, 'doberman', NULL),
-(2, 'pitbull', 1121),
-(4, 'chihuawua', 1121),
-(5, 'pastor aleman', 1121);
+(1, 'Doberman', 1121),
+(2, 'Pitbull', 1121),
+(4, 'Chihuahua', 1121),
+(5, 'Pastor Aleman', 1121),
+(6, 'Dalmata', 1121),
+(7, 'Lobo Siberiano', 1121),
+(8, 'Hámster', 1121),
+(9, 'Conejo', 1121),
+(11, 'Tortuga', 1121),
+(12, 'Serpiente', 1121),
+(13, 'Loro', 1121),
+(14, 'Periquito', 1121),
+(15, 'Callejero', 1121);
 
 -- --------------------------------------------------------
 
@@ -128,7 +139,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`identificacion`, `nombre`, `email`, `password`) VALUES
-(1121, 'daniel ', 'esteban@gmail.com', '$2b$10$bbk9RaHgTv17tGZtn7cVrOK.boiHG8Nde16gZwXvf5WWgWpy4P3u2');
+(1121, 'Esteban', 'esteban@gmail.com', '$2b$10$bbk9RaHgTv17tGZtn7cVrOK.boiHG8Nde16gZwXvf5WWgWpy4P3u2');
 
 --
 -- Índices para tablas volcadas
@@ -179,7 +190,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `generos`
@@ -191,13 +202,13 @@ ALTER TABLE `generos`
 -- AUTO_INCREMENT de la tabla `mascotas`
 --
 ALTER TABLE `mascotas`
-  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_mascota` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `razas`
 --
 ALTER TABLE `razas`
-  MODIFY `id_raza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_raza` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas
